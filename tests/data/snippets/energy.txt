@@ -1,0 +1,1 @@
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -233.722555723970430

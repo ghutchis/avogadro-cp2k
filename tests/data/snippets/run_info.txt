@@ -1,0 +1,6 @@
+ CP2K| version string:                                       CP2K version 2026.2
+ GLOBAL| Project name                                                        h2o
+ GLOBAL| Run type                                                         ENERGY
+ DFT| Spin restricted Kohn-Sham (RKS) calculation                            RKS
+ DFT| Multiplicity                                                             1
+ DFT| Charge                                                                   0

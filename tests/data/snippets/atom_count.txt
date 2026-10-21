@@ -1,0 +1,4 @@
+
+  Total number of            - Atomic kinds:                                   4
+                             - Atoms:                                         46
+                             - Shell sets:                                    46

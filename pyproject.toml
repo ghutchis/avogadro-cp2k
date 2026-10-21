@@ -1,0 +1,52 @@
+[project]
+name = "avogadro-cp2k"
+version = "0.1.0"
+description = "Read CP2K main output files in Avogadro 2"
+authors = [{name = "Geoff Hutchison", email = "geoff.hutchison@gmail.com"}]
+license = "BSD-3-Clause"
+dependencies = ["regex>=2022.1.18", "numpy>=1.24"]
+requires-python = ">= 3.10"
+
+[project.scripts]
+avogadro-cp2k = "avogadro_cp2k:main"
+
+[build-system]
+build-backend = "uv_build"
+requires = ["uv_build>=0.10.2,<0.11.0"]
+
+[tool.avogadro]
+minimum-avogadro-version = "2.1"
+
+[[tool.avogadro.file-formats]]
+identifier = "cp2k"
+format-name = "CP2K"
+file-extensions = ["cp2k"]
+description = "Read CP2K main output files (geometry, cell, charges, TDDFPT spectrum)"
+support.read = true
+support.write = false
+output-format = "cjson"
+input-mode = "file"
+bond = true
+# Lets Avogadro route generic .out/.log files here by content. Do not also
+# claim "out"/"log": the file dialog would then hand every .out/.log file
+# (Gaussian, ORCA, ...) to this plugin instead of the generic-output reader.
+patterns = ["CP2K| version string"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+avogadro-cp2k = { path = ".", editable = true }
+
+[tool.pixi.feature.test.dependencies]
+pytest = "*"
+
+[tool.pixi.feature.test.tasks]
+test = "pytest tests"
+
+[tool.pixi.environments]
+test = ["test"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
